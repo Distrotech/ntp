@@ -65,8 +65,8 @@ DIST_COMMON = README $(noinst_HEADERS) $(srcdir)/Makefile.am \
 	$(top_srcdir)/depsver.mf
 subdir = ntpq
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/define_dir.m4 \
-	$(top_srcdir)/m4/isc-posix.m4 $(top_srcdir)/m4/libtool.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/sntp/libopts/m4/libopts.m4 \
+	$(top_srcdir)/m4/define_dir.m4 $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
 	$(top_srcdir)/m4/ntp_cacheversion.m4 \
@@ -95,7 +95,8 @@ PROGRAMS = $(bin_PROGRAMS) $(sbin_PROGRAMS)
 am_ntpq_OBJECTS = ntpq.$(OBJEXT) ntpq-subs.$(OBJEXT) \
 	ntpq-opts.$(OBJEXT)
 ntpq_OBJECTS = $(am_ntpq_OBJECTS)
-ntpq_DEPENDENCIES = version.o ../libntp/libntp.a
+am__DEPENDENCIES_1 =
+ntpq_DEPENDENCIES = version.o $(am__DEPENDENCIES_1) ../libntp/libntp.a
 DEFAULT_INCLUDES = -I.@am__isrc@ -I$(top_builddir)
 depcomp = $(SHELL) $(top_srcdir)/depcomp
 am__depfiles_maybe = depfiles
@@ -193,6 +194,9 @@ LCRYPTO = @LCRYPTO@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
+LIBOPTS_CFLAGS = @LIBOPTS_CFLAGS@
+LIBOPTS_DIR = @LIBOPTS_DIR@
+LIBOPTS_LDADD = @LIBOPTS_LDADD@
 LIBPARSE = @LIBPARSE@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -236,6 +240,7 @@ PATH_PERL = @PATH_PERL@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PATH_SH = @PATH_SH@
 PATH_TEST = @PATH_TEST@
+POSIX_SHELL = @POSIX_SHELL@
 PROPDELAY = @PROPDELAY@
 RANLIB = @RANLIB@
 SED = @SED@

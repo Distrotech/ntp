@@ -72,8 +72,8 @@ DIST_COMMON = README $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
 	ansi2knr.c
 subdir = util
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/define_dir.m4 \
-	$(top_srcdir)/m4/isc-posix.m4 $(top_srcdir)/m4/libtool.m4 \
+am__aclocal_m4_deps = $(top_srcdir)/sntp/libopts/m4/libopts.m4 \
+	$(top_srcdir)/m4/define_dir.m4 $(top_srcdir)/m4/libtool.m4 \
 	$(top_srcdir)/m4/ltoptions.m4 $(top_srcdir)/m4/ltsugar.m4 \
 	$(top_srcdir)/m4/ltversion.m4 $(top_srcdir)/m4/lt~obsolete.m4 \
 	$(top_srcdir)/m4/ntp_cacheversion.m4 \
@@ -117,7 +117,9 @@ longsize_LDADD = $(LDADD)
 longsize_DEPENDENCIES = ../libntp/libntp.a
 am_ntp_keygen_OBJECTS = ntp-keygen.$(OBJEXT) ntp-keygen-opts.$(OBJEXT)
 ntp_keygen_OBJECTS = $(am_ntp_keygen_OBJECTS)
-ntp_keygen_DEPENDENCIES = version.o ../libntp/libntp.a
+am__DEPENDENCIES_1 =
+ntp_keygen_DEPENDENCIES = version.o $(am__DEPENDENCIES_1) \
+	../libntp/libntp.a
 ntptime_SOURCES = ntptime.c
 ntptime_OBJECTS = ntptime.$(OBJEXT)
 ntptime_LDADD = $(LDADD)
@@ -250,6 +252,9 @@ LCRYPTO = @LCRYPTO@
 LD = @LD@
 LDFLAGS = @LDFLAGS@
 LIBOBJS = @LIBOBJS@
+LIBOPTS_CFLAGS = @LIBOPTS_CFLAGS@
+LIBOPTS_DIR = @LIBOPTS_DIR@
+LIBOPTS_LDADD = @LIBOPTS_LDADD@
 LIBPARSE = @LIBPARSE@
 LIBS = @LIBS@
 LIBTOOL = @LIBTOOL@
@@ -293,6 +298,7 @@ PATH_PERL = @PATH_PERL@
 PATH_SEPARATOR = @PATH_SEPARATOR@
 PATH_SH = @PATH_SH@
 PATH_TEST = @PATH_TEST@
+POSIX_SHELL = @POSIX_SHELL@
 PROPDELAY = @PROPDELAY@
 RANLIB = @RANLIB@
 SED = @SED@
